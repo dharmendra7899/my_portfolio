@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
+import 'package:my_portfolio/theme/colors.dart';
 
 part 'widget/app_bar_theme.dart';
 

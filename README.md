@@ -1,4 +1,4 @@
-# flutter_portfolio_clone
+# my_portfolio
 
 A new Flutter project.
 

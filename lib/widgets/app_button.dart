@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/context_extension.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/context_extension.dart';
 
 
 class AppButton extends StatefulWidget {

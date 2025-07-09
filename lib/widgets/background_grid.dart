@@ -1,6 +1,6 @@
 // background_grid.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
+import 'package:my_portfolio/theme/colors.dart';
 
 class BackgroundGrid extends StatelessWidget {
   const BackgroundGrid({super.key});

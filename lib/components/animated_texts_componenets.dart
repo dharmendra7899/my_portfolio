@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/responsive.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
+import 'package:my_portfolio/responsive.dart';
+import 'package:my_portfolio/theme/colors.dart';
 
 class AnimatedImageContainer extends StatefulWidget {
   const AnimatedImageContainer({Key? key, this.height = 300, this.width = 250})

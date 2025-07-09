@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/constants/texts.dart';
-import 'package:flutter_portfolio_clone/responsive.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/app_button.dart';
-import 'package:flutter_portfolio_clone/widgets/context_extension.dart';
+import 'package:my_portfolio/constants/texts.dart';
+import 'package:my_portfolio/responsive.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/app_button.dart';
+import 'package:my_portfolio/widgets/context_extension.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,7 +14,7 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = ['About', 'Experience', 'Portfolio', 'Contact'];
+    final items = ['About', 'Experience', 'Projects', 'Contact'];
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -44,8 +44,12 @@ class Navbar extends StatelessWidget {
                 radius: 4,
                 height: 35,
                 width: 130,
-                onPressed: () => launchUrl(Uri.parse(
-                    'https://wa.me/919795541088?text=${Uri.encodeComponent("Hi Dharmendra, I loved your portfolio! Let's connect.")}')),
+                onPressed:
+                    () => launchUrl(
+                      Uri.parse(
+                        'https://wa.me/9795541088?text=${Uri.encodeComponent("Hi Dharmendra, I loved your portfolio! Let's connect.")}',
+                      ),
+                    ),
                 title: texts.whatsapp,
                 icon: FaIcon(
                   FontAwesomeIcons.whatsapp,
@@ -67,24 +71,31 @@ class Navbar extends StatelessWidget {
                       color: appColors.headingColor,
                     ),
                     onSelected: (value) => onNavTap(value.toLowerCase()),
-                    itemBuilder: (context) => items
-                        .map((label) => PopupMenuItem<String>(
-                              value: label,
-                              child: Text(label),
-                            ))
-                        .toList(),
+                    itemBuilder:
+                        (context) =>
+                            items
+                                .map(
+                                  (label) => PopupMenuItem<String>(
+                                    value: label,
+                                    child: Text(label),
+                                  ),
+                                )
+                                .toList(),
                   ),
-                )
+                ),
               } else ...{
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: items
-                      .map((label) => _HoverNavItem(
-                            label: label,
-                            onTap: () => onNavTap(label.toLowerCase()),
-                          ))
-                      .toList(),
-                )
+                  children:
+                      items
+                          .map(
+                            (label) => _HoverNavItem(
+                              label: label,
+                              onTap: () => onNavTap(label.toLowerCase()),
+                            ),
+                          )
+                          .toList(),
+                ),
               },
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.end,

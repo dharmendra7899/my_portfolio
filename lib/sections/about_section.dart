@@ -1,10 +1,12 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/components/animated_texts_componenets.dart';
-import 'package:flutter_portfolio_clone/constants/texts.dart';
-import 'package:flutter_portfolio_clone/responsive.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/app_button.dart';
-import 'package:flutter_portfolio_clone/widgets/context_extension.dart';
+import 'package:marquee/marquee.dart';
+import 'package:my_portfolio/components/animated_texts_componenets.dart';
+import 'package:my_portfolio/constants/texts.dart';
+import 'package:my_portfolio/responsive.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/app_button.dart';
+import 'package:my_portfolio/widgets/context_extension.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -34,26 +36,32 @@ class AboutSection extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: horizontalPadding, vertical: verticalPadding),
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
       child: TweenAnimationBuilder(
-        tween:
-            Tween<double>(begin: isMobile ? 25 : 30, end: isMobile ? 20 : 40),
+        tween: Tween<double>(
+          begin: isMobile ? 25 : 30,
+          end: isMobile ? 20 : 40,
+        ),
         duration: const Duration(milliseconds: 300),
         builder: (context, value, child) {
           return Flex(
             direction: isMobile ? Axis.vertical : Axis.horizontal,
-            mainAxisAlignment: isMobile
-                ? MainAxisAlignment.start
-                : MainAxisAlignment.spaceBetween,
+            mainAxisAlignment:
+                isMobile
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               if (!isMobile) const SizedBox(width: 20),
               Flexible(
                 child: Column(
-                  crossAxisAlignment: isMobile
-                      ? CrossAxisAlignment.center
-                      : CrossAxisAlignment.start,
+                  crossAxisAlignment:
+                      isMobile
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
                   children: [
                     Text(
                       texts.hii,
@@ -64,15 +72,37 @@ class AboutSection extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      texts.name,
-                      textAlign: isMobile ? TextAlign.center : TextAlign.left,
-                      style: textTheme.headlineLarge?.copyWith(
-                        color: appColors.appWhite,
+
+                    DefaultTextStyle(
+                      style: textTheme.headlineLarge!.copyWith(
                         fontSize: isMobile ? 32 : 50,
                         fontWeight: FontWeight.w700,
+                        color:appColors.appWhite,
+                      ),
+                      child: AnimatedTextKit(
+                        isRepeatingAnimation: true,
+                        totalRepeatCount: 3,
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            texts.name,
+                            speed: const Duration(milliseconds: 250),
+                            cursor: '',
+                          ),
+                        ],
                       ),
                     ),
+
+
+
+                    // Text(
+                    //   texts.name,
+                    //   textAlign: isMobile ? TextAlign.center : TextAlign.left,
+                    //   style: textTheme.headlineLarge?.copyWith(
+                    //     color: appColors.appWhite,
+                    //     fontSize: isMobile ? 32 : 50,
+                    //     fontWeight: FontWeight.w700,
+                    //   ),
+                    // ),
                     const SizedBox(height: 10),
                     Text(
                       texts.summary,
@@ -84,17 +114,21 @@ class AboutSection extends StatelessWidget {
                         letterSpacing: 1.2,
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 20),
                     AppButton(
                       onPressed: () {},
                       title: texts.resume,
                       height: 45,
                       width: 200,
                       radius: 4,
-                      icon: Icon(Icons.download,size: 15,color: appColors.headingColor,),
+                      icon: Icon(
+                        Icons.download,
+                        size: 15,
+                        color: appColors.headingColor,
+                      ),
                       borderColor: appColors.headingColor,
                       textColor: appColors.headingColor,
-                    )
+                    ),
                   ],
                 ),
               ),

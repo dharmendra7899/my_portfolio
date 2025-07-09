@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/constants/texts.dart';
-import 'package:flutter_portfolio_clone/responsive.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/app_button.dart';
-import 'package:flutter_portfolio_clone/widgets/context_extension.dart';
+import 'package:my_portfolio/constants/texts.dart';
+import 'package:my_portfolio/responsive.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/app_button.dart';
+import 'package:my_portfolio/widgets/context_extension.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 

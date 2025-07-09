@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/components/social_media_coloumn.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/context_extension.dart';
+import 'package:my_portfolio/components/social_media_coloumn.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaIconList extends StatelessWidget {

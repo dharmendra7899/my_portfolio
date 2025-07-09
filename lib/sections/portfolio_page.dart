@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/components/navbar.dart';
-import 'package:flutter_portfolio_clone/components/social_media_list.dart';
-import 'package:flutter_portfolio_clone/responsive.dart';
-import 'package:flutter_portfolio_clone/sections/contact_section.dart';
-import 'package:flutter_portfolio_clone/sections/about_section.dart';
-import 'package:flutter_portfolio_clone/sections/experience_section.dart';
-import 'package:flutter_portfolio_clone/sections/portfolio_section.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
-import 'package:flutter_portfolio_clone/widgets/background_grid.dart';
+import 'package:my_portfolio/components/navbar.dart';
+import 'package:my_portfolio/components/social_media_list.dart';
+import 'package:my_portfolio/responsive.dart';
+import 'package:my_portfolio/sections/contact_section.dart';
+import 'package:my_portfolio/sections/about_section.dart';
+import 'package:my_portfolio/sections/experience_section.dart';
+import 'package:my_portfolio/sections/portfolio_section.dart';
+import 'package:my_portfolio/theme/colors.dart';
+import 'package:my_portfolio/widgets/background_grid.dart';
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({super.key});
-
   @override
   State<PortfolioPage> createState() => _PortfolioPageState();
 }

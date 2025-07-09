@@ -1,8 +1,8 @@
 // main.dart
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/sections/portfolio_page.dart';
+import 'package:my_portfolio/sections/portfolio_page.dart';
 
-import 'package:flutter_portfolio_clone/theme/theme.dart';
+import 'package:my_portfolio/theme/theme.dart';
 
 void main() => runApp(const MyApp());
 

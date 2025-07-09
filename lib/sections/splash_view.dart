@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio_clone/components/animated_loading_text.dart';
-import 'package:flutter_portfolio_clone/components/animated_texts_componenets.dart';
-import 'package:flutter_portfolio_clone/sections/portfolio_page.dart';
-import 'package:flutter_portfolio_clone/theme/colors.dart';
+import 'package:my_portfolio/components/animated_loading_text.dart';
+import 'package:my_portfolio/components/animated_texts_componenets.dart';
+import 'package:my_portfolio/sections/portfolio_page.dart';
+import 'package:my_portfolio/theme/colors.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
