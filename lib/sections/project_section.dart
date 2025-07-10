@@ -4,14 +4,15 @@ import 'package:my_portfolio/theme/colors.dart';
 import 'package:my_portfolio/widgets/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PortfolioSection extends StatefulWidget {
-  PortfolioSection({super.key});
+class ProjectSection extends StatefulWidget {
+  ProjectSection({super.key});
 
   @override
-  State<PortfolioSection> createState() => _PortfolioSectionState();
+  State<ProjectSection> createState() => _ProjectSectionState();
 }
 
-class _PortfolioSectionState extends State<PortfolioSection> with TickerProviderStateMixin{
+class _ProjectSectionState extends State<ProjectSection>
+    with TickerProviderStateMixin {
   final List<Map<String, dynamic>> projects = [
     {
       "image": 'assets/images/chat.png',
@@ -49,25 +50,6 @@ class _PortfolioSectionState extends State<PortfolioSection> with TickerProvider
           "https://play.google.com/store/search?q=mechmiles&c=apps&hl=en_IN",
     },
 
-    {
-      "image": 'assets/images/chat.png',
-      "title": 'Policy Vault',
-      "subtitle": 'Insurance Policy Organizer',
-      "description":
-          'Policy Vault simplifies insurance management by allowing users to digitize physical policies, store them securely, and access them anywhere. It creates digital policy cards and enables seamless sharing with family members. Perfect for health, life, and vehicle policies.',
-      "tech": ['Flutter', 'Dart', 'Android', 'iOS', 'REST API'],
-      "link":
-          "https://play.google.com/store/apps/details?id=com.proj.policyvault&hl=en_IN",
-    },
-
-    {
-      "image": 'assets/images/chat.png',
-      "title": 'Poca Healthcare',
-      "subtitle": 'Healthcare chatbot',
-      "description":
-          'AI-powered chatbot to assist patients with appointment booking, symptom tracking, and medication reminders.',
-      "tech": ['Dart', 'Android', 'iOS'],
-    },
     {
       "image": 'assets/images/chat.png',
       "title": 'Schooling Pro',
@@ -114,11 +96,29 @@ class _PortfolioSectionState extends State<PortfolioSection> with TickerProvider
       "link":
           "https://play.google.com/store/apps/details?id=com.gigsam.user.services&hl=en_IN",
     },
+    {
+      "image": 'assets/images/chat.png',
+      "title": 'Policy Vault',
+      "subtitle": 'Insurance Policy Organizer',
+      "description":
+          'Policy Vault simplifies insurance management by allowing users to digitize physical policies, store them securely, and access them anywhere. It creates digital policy cards and enables seamless sharing with family members. Perfect for health, life, and vehicle policies.',
+      "tech": ['Flutter', 'Dart', 'Android', 'iOS', 'REST API'],
+      "link":
+          "https://play.google.com/store/apps/details?id=com.proj.policyvault&hl=en_IN",
+    },
+
+    {
+      "image": 'assets/images/chat.png',
+      "title": 'Poca Healthcare',
+      "subtitle": 'Healthcare chatbot',
+      "description":
+          'AI-powered chatbot to assist patients with appointment booking, symptom tracking, and medication reminders.',
+      "tech": ['Dart', 'Android', 'iOS'],
+    },
   ];
 
   late final AnimationController _controller;
   late final List<Animation<Offset>> _slideAnimations;
-
 
   @override
   void initState() {
@@ -182,23 +182,16 @@ class _PortfolioSectionState extends State<PortfolioSection> with TickerProvider
           itemCount: projects.length,
           padding: EdgeInsets.zero,
           itemBuilder:
-              (context, index) =>
-                  SlideTransition(
-                      position: _slideAnimations[index],
-                      child: ProjectCard(index: index, data: projects[index])),
+              (context, index) => SlideTransition(
+                position: _slideAnimations[index],
+                child: ProjectCard(index: index, data: projects[index]),
+              ),
           separatorBuilder: (_, __) => const SizedBox(height: 14),
         ),
       ],
     );
   }
 }
-
-
-
-
-
-
-
 
 class ProjectCard extends StatefulWidget {
   final int index;

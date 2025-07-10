@@ -97,15 +97,7 @@ class Navbar extends StatelessWidget {
                           .toList(),
                 ),
               },
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   children: items
-              //       .map((label) => _HoverNavItem(
-              //             label: label,
-              //             onTap: () => onNavTap(label.toLowerCase()),
-              //           ))
-              //       .toList(),
-              // ),
+
             ],
           ),
         ],

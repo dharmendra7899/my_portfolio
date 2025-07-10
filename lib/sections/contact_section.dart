@@ -1,43 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portfolio/constants/texts.dart';
 import 'package:my_portfolio/responsive.dart';
 import 'package:my_portfolio/theme/colors.dart';
 import 'package:my_portfolio/widgets/app_button.dart';
 import 'package:my_portfolio/widgets/context_extension.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContactSection extends StatelessWidget {
-  const ContactSection({super.key});
+class ContactSection extends StatefulWidget {
+  final ValueNotifier<int>? animationKey;
+  const ContactSection({super.key,  this.animationKey});
+
+  @override
+  State<ContactSection> createState() => _ContactSectionState();
+}
+
+
+
+class _ContactSectionState extends State<ContactSection>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<Offset> _slideAnimation;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1800),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutCubic,
+    ));
+
+    _fadeAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(_controller);
+
+    widget.animationKey?.addListener(() {
+      _controller.forward(from: 0);
+    });
+  }
+
+
+  @override
+  void dispose() {
+    widget.animationKey?.removeListener(() {});
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
-    final tablet = Responsive.isTablet(context);
+    final isTablet = Responsive.isTablet(context);
+
     final horizontalPadding = isMobile
         ? 20.0
-        : tablet
-            ? 30.0
-            : 200.0;
+        : isTablet
+        ? 30.0
+        : 200.0;
     final verticalPadding = isMobile ? 20.0 : 60.0;
-    return TweenAnimationBuilder(
-        tween:
-            Tween<double>(begin: isMobile ? 25 : 30, end: isMobile ? 20 : 40),
-        duration: const Duration(milliseconds: 300),
-        builder: (context, value, child) {
-          return Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding, vertical: verticalPadding),
-            child: Column(children: [
-              Text(texts.touch,
-                  style: context.textTheme.titleLarge?.copyWith(
-                    color: appColors.headingColor,
-                    fontSize: isMobile ? 26 : 30,
-                    fontWeight: FontWeight.w700,
-                  )),
-              SizedBox(
-                height: 15,
+
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
+          child: Column(
+            children: [
+              Text(
+                texts.touch,
+                style: context.textTheme.titleLarge?.copyWith(
+                  color: appColors.headingColor,
+                  fontSize: isMobile ? 26 : 30,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
+              const SizedBox(height: 15),
               Text(
                 texts.contactInfo,
                 textAlign: TextAlign.center,
@@ -48,43 +100,42 @@ class ContactSection extends StatelessWidget {
                   letterSpacing: 1.2,
                 ),
               ),
-              SizedBox(
-                height: 25,
-              ),
+              const SizedBox(height: 25),
               AppButton(
                 radius: 4,
                 height: 45,
                 width: 140,
-                onPressed: () {
-                  sendEmail();
-                },
+                onPressed: sendEmail,
                 title: texts.sayHello,
                 fontSize: 12,
                 textColor: appColors.barColor,
                 borderColor: appColors.barColor,
               ),
-              SizedBox(
-                height: 35,
-              ),
-              if (isMobile || tablet) SocialMediaIconRow()
-            ]),
-          );
-        });
+              const SizedBox(height: 35),
+              if (isMobile || isTablet) const SocialMediaIconRow(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void sendEmail() async {
-    final subject = Uri.encodeComponent('''Let’s Connect!''');
+    final subject = Uri.encodeComponent('Let’s Connect!');
     final body = Uri.encodeComponent(
-        'Hi there, I came across your portfolio and would love to connect.');
+      'Hi there, I came across your portfolio and would love to connect.',
+    );
 
     final emailUri = Uri.parse(
       'mailto:dharm.dk1999@gmail.com?subject=$subject&body=$body',
     );
+
     if (await canLaunchUrl(emailUri)) {
       await launchUrl(emailUri);
     }
   }
 }
+
 
 class SocialMediaIconRow extends StatelessWidget {
   const SocialMediaIconRow({super.key});
@@ -149,3 +200,4 @@ class _SocialMediaIconState extends State<SocialMediaIcon> {
     );
   }
 }
+

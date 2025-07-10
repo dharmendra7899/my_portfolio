@@ -38,7 +38,7 @@ class AnimatedImageContainerState extends State<AnimatedImageContainer>
       builder: (context, child) {
         final value = _controller.value;
         return Transform.translate(
-          offset: Offset(0, 2 * value),
+          offset: Offset(0, 3 * value),
           child: Container(
             height: widget.height!,
             width: widget.width!,

@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:marquee/marquee.dart';
 import 'package:my_portfolio/components/animated_texts_componenets.dart';
 import 'package:my_portfolio/constants/texts.dart';
 import 'package:my_portfolio/responsive.dart';
@@ -77,7 +76,7 @@ class AboutSection extends StatelessWidget {
                       style: textTheme.headlineLarge!.copyWith(
                         fontSize: isMobile ? 32 : 50,
                         fontWeight: FontWeight.w700,
-                        color:appColors.appWhite,
+                        color: appColors.appWhite,
                       ),
                       child: AnimatedTextKit(
                         isRepeatingAnimation: true,
@@ -92,18 +91,9 @@ class AboutSection extends StatelessWidget {
                       ),
                     ),
 
-
-
-                    // Text(
-                    //   texts.name,
-                    //   textAlign: isMobile ? TextAlign.center : TextAlign.left,
-                    //   style: textTheme.headlineLarge?.copyWith(
-                    //     color: appColors.appWhite,
-                    //     fontSize: isMobile ? 32 : 50,
-                    //     fontWeight: FontWeight.w700,
-                    //   ),
                     // ),
                     const SizedBox(height: 10),
+
                     Text(
                       texts.summary,
                       textAlign: isMobile ? TextAlign.center : TextAlign.left,
